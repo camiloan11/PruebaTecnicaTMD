@@ -1,0 +1,76 @@
+docker build -t mi_api .
+docker run -d -p 8000:8000 mi_api
+
+1️⃣ docker run
+
+Este es el comando básico para ejecutar un contenedor a partir de una imagen Docker.
+En este caso, la imagen que queremos ejecutar es mi_api.
+
+2️⃣ -d
+
+Significa “detached” (modo desprendido).
+
+Ejecuta el contenedor en segundo plano, sin bloquear tu terminal.
+
+Si no pones -d, el contenedor se ejecutaría en primer plano y verías todos los logs directamente en la terminal.
+
+3️⃣ -p 8000:8000
+
+Esto hace un mapeo de puertos entre tu máquina y el contenedor.
+
+Formato: -p <PUERTO_HOST>:<PUERTO_CONTENEDOR>
+
+Aquí significa que el puerto 8000 de tu máquina local apunta al puerto 8000 dentro del contenedor, donde tu FastAPI está corriendo.
+
+De esta manera puedes acceder a tu API desde el navegador o Postman usando:
+
+http://localhost:8000
+
+4️⃣ mi_api
+
+Es el nombre de la imagen que quieres ejecutar, que creaste con:
+
+docker build -t mi_api .
+
+Resumen
+
+docker run → ejecutar contenedor
+
+-d → en segundo plano
+
+-p 8000:8000 → exponer puerto para acceder desde tu máquina
+
+mi_api → la imagen que vas a ejecutar
+
+
+
+
+Prueba los endpoints:
+
+http://localhost:8000/usuarios
+
+http://localhost:8000/usuarios/1
+
+http://localhost:8000/buscar?nombre=Ana
+
+
+Detener el contenedeor
+
+dokcer ps para conecer el ID
+docker stop <CONTAINER_ID o NOMBRE>
+
+
+💡 Tip: Para no complicarte con nombres automáticos, puedes asignar un nombre al contenedor cuando lo creas:
+
+docker run -d -p 8000:8000 --name mi_api_container mi_api
+
+
+Luego puedes hacer siempre:
+
+docker stop mi_api_container
+docker start mi_api_container
+
+
+
+
+az webapp deploy --name fallasVehiculos-api-dev --resource-group rg-fallastecnicas-dev-eu --src-path .\demoApi.zip
