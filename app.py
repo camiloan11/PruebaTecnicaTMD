@@ -14,7 +14,7 @@ from typing import Optional
 class Config:
     UPLOAD_FOLDER = Path(os.getenv("UPLOAD_FOLDER", "uploads"))
     ALLOWED_EXTENSIONS = {"csv"}
-    N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "https://camiloan11.app.n8n.cloud/webhook-test/csv-upload")
+    N8N_WEBHOOK_URL = os.getenv("N8N_WEBHOOK_URL", "https://camiloan11.app.n8n.cloud/webhook/csv-upload")
     SWAGGER_CONFIG = {
         "headers": [],
         "specs": [
